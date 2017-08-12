@@ -1,0 +1,7 @@
+lib/*
+composer.phar
+composer.lock
+vendor/*
+.idea/*
+
+
