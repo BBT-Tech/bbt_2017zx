@@ -2,9 +2,72 @@
 <html lang="cn">
 <head>
     <meta charset="UTF-8">
+    <script src="lib/EaselJS/lib/easeljs-0.8.2.min.js"></script>
     <title></title>
 </head>
-<body>
+<body onload="init();">
+<canvas id="gameCanvas" width="1920" height="1080"></canvas>
+<script type="text/javascript">
+    var stage;
+    var forgiveHat;
+    var w;
+    var h;
+    var objs=new Array;
+    function init(){
+        var canvas=document.getElementById("gameCanvas");
+        w=canvas.width;
+        h=canvas.height;
+        stage=new createjs.Stage("gameCanvas");
+        createjs.Touch.enable(stage);
+        stage.enableMouseOver(10);
 
+
+        var container=new createjs.Container();
+        stage.addChild(container);
+        for(var i=0;i<100;i++)
+        {
+            forgiveHat=new createjs.Bitmap("img/LUOBO.svg");
+            forgiveHat.setTransform(50,50,0.1,0.1);
+            setShapeInfo(forgiveHat);
+            stage.addChild(forgiveHat);
+            objs.push(forgiveHat)
+
+        }
+        stage.update();
+        createjs.Ticker.timingMode = createjs.Ticker.RAF;
+        createjs.Ticker.addEventListener("tick", tick);
+    }
+    function tick(event)
+    {
+        for(var i in objs)
+        {
+            var shape=objs[i];
+            shape.x+=(shape.target_x-shape.source_x)*shape.speed;
+
+            shape.y=(shape.x-shape.source_x)/(shape.target_x-shape.source_x)*h;
+            if((shape.x-shape.source_x)/(shape.target_x-shape.source_x)>1)
+                setShapeInfo(shape);
+
+        }
+
+        stage.update();
+
+    }
+    function setShapeInfo(shape)
+    {
+        shape.source_x=Math.random() * w;
+        shape.x=forgiveHat.source_x;
+        shape.y=0;
+        shape.target_x=Math.random() * w;
+        var diff=shape.target_x-shape.source_x;
+        if(diff>=0 && diff<300)
+            shape.target_x+=300;
+        if(diff<0 && diff>-300)
+            shape.target_x-=300;
+        shape.speed=Math.random()*0.01;
+        if(shape.speed<0.005)
+            shape.speed=0.005;
+    }
+</script>
 </body>
 </html>
