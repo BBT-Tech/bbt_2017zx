@@ -13,26 +13,38 @@
     var w;
     var h;
     var objs=new Array;
+    var score=0;
+    var scoreLabel;
     function init(){
         var canvas=document.getElementById("gameCanvas");
         w=canvas.width;
         h=canvas.height;
         stage=new createjs.Stage("gameCanvas");
         createjs.Touch.enable(stage);
-        stage.enableMouseOver(10);
+        stage.enableMouseOver();
 
 
         var container=new createjs.Container();
         stage.addChild(container);
         for(var i=0;i<100;i++)
         {
-            forgiveHat=new createjs.Bitmap("img/LUOBO.svg");
-            forgiveHat.setTransform(50,50,0.1,0.1);
+            forgiveHat=new createjs.Bitmap("img/forgive.png");
+            //forgiveHat.setTransform(0,0,0.1,0.1);
+
+            forgiveHat.cursor = "pointer";
+            forgiveHat.on("click", function (event,data) {
+                console.log(123);
+                setShapeInfo(this);
+                score++;
+            });
             setShapeInfo(forgiveHat);
             stage.addChild(forgiveHat);
+
             objs.push(forgiveHat)
 
         }
+        scoreLabel = new createjs.Text("您的可爱值：", "bold 30px Arial", "red");
+        container.addChild(scoreLabel);
         stage.update();
         createjs.Ticker.timingMode = createjs.Ticker.RAF;
         createjs.Ticker.addEventListener("tick", tick);
@@ -49,6 +61,7 @@
                 setShapeInfo(shape);
 
         }
+        scoreLabel.text = "您的可爱值："+score;
 
         stage.update();
 
