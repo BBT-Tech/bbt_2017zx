@@ -28,8 +28,8 @@
         stage.addChild(container);
         for(var i=0;i<100;i++)
         {
-            forgiveHat=new createjs.Bitmap("img/forgive.png");
-            //forgiveHat.setTransform(0,0,0.1,0.1);
+            forgiveHat=new createjs.Bitmap("img/LUOBO.svg");
+            forgiveHat.setTransform(0,0,0.1,0.1);
 
             forgiveHat.cursor = "pointer";
             forgiveHat.on("click", function (event,data) {
@@ -38,11 +38,22 @@
                 score++;
             });
             setShapeInfo(forgiveHat);
-            stage.addChild(forgiveHat);
+            container.addChild(forgiveHat);
 
             objs.push(forgiveHat)
 
         }
+        for(var i=0;i<10;i++)
+        {
+            var huaihuai=new createjs.Bitmap("img/huaihuai.gif");
+            huaihuai.setTransform(0,0,2,2);
+
+            huaihuai.x=w/10*i;
+            huaihuai.y=0;
+            container.addChild(huaihuai);
+        }
+
+
         scoreLabel = new createjs.Text("您的可爱值：", "bold 30px Arial", "red");
         container.addChild(scoreLabel);
         stage.update();
@@ -56,7 +67,7 @@
             var shape=objs[i];
             shape.x+=(shape.target_x-shape.source_x)*shape.speed;
 
-            shape.y=(shape.x-shape.source_x)/(shape.target_x-shape.source_x)*h;
+            shape.y=(shape.x-shape.source_x)/(shape.target_x-shape.source_x)*(h-100)+100;
             if((shape.x-shape.source_x)/(shape.target_x-shape.source_x)>1)
                 setShapeInfo(shape);
 
@@ -68,9 +79,9 @@
     }
     function setShapeInfo(shape)
     {
-        shape.source_x=Math.random() * w;
+        shape.source_x=Math.floor(Math.random()*10) * w/10;
         shape.x=shape.source_x;
-        shape.y=0;
+        shape.y=100;
         shape.target_x=Math.random() * w;
         var diff=shape.target_x-shape.source_x;
         if(diff>=0 && diff<300)

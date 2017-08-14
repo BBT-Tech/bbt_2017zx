@@ -19,6 +19,9 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "vue": "^2.4.2",
-    "EaselJS": "easeljs#^0.8.2"
+    "EaselJS": "easeljs#^0.8.2",
+    "TweenJS": "CreateJS/TweenJS#^0.6.2",
+    "SoundJS": "CreateJS/soundJS#^0.6.2",
+    "PreloadJS": "CreateJS/preloadJS#^0.6.2"
   }
 }

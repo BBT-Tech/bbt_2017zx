@@ -1,0 +1,42 @@
+.btn{
+    background-color: white;
+    margin: 6px auto;
+    padding: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: green;
+    color: green;
+    width:100px;
+    height:30px;
+    line-height: 30px;
+    font-size: 0.8em;
+    text-align: center;
+    display: block;
+    border-radius: 3px;
+}
+.btn-round{
+    border-radius: 15px;
+}
+.input{
+    border-style: none;
+    font-size: 1em;
+    display:inline-block;
+}
+.textarea{
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+    display:inline-block;
+    resize: none;
+    font-size:1em;
+    min-height:3em;
+}
+.textarea:focus , .input:focus{
+    outline: none;
+}
+.container{
+    display: block;
+    margin:0 auto;
+    padding:0;
+    width:80%;
+    font-size:16px;
+}
