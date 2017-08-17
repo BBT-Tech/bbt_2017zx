@@ -1,0 +1,98 @@
+body{
+    background-image: url("../game_resource/background.png");
+}
+.bottom-img{
+    position:fixed;
+    display: block;
+    bottom:0;
+    left:0;
+    width:100%;
+}
+.roating{
+    animation-direction: normal;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-name: Roating;
+    animation-timing-function: linear;
+}
+@keyframes Roating{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+.loading-div{
+    position:fixed;
+    left:0;
+    top:30%;
+    width: 100%;
+}
+.description-1-div{
+    position:fixed;
+    left:0;
+    bottom:-6px;
+    width: 100%;
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+.descirption-1-img{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.descirption-1-text-div{
+    position: absolute;
+
+    left:11.56%;
+    top:43.57%;
+    width:82.65%;
+    height: 31.46%;
+    padding-top:16px;
+}
+.descirption-1-text-div > p{
+    font-size: 24px;
+    font-weight: bold;
+    color: #555555;
+    margin: 0;
+    text-align: center;
+
+}
+.loading-img{
+    display: block;
+    margin:0 auto;
+}
+.loading-text{
+    display: block;
+    margin-top:1.5em;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color:grey;
+}
+.description-2-div{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.8;
+    display: none;
+}
+.description-2-text-div{
+    position:absolute;
+    top:30%;
+    width: 100%;
+}
+.description-2-text-div>p{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 16px;
+}
