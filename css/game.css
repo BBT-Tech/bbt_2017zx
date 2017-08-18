@@ -1,5 +1,6 @@
 body{
     background-image: url("../game_resource/background.png");
+    margin:0;
 }
 .bottom-img{
     position:fixed;
@@ -7,6 +8,7 @@ body{
     bottom:0;
     left:0;
     width:100%;
+    z-index:10;
 }
 .roating{
     animation-direction: normal;
@@ -29,7 +31,7 @@ body{
     top:30%;
     width: 100%;
 }
-.description-1-div{
+.description-1-div,.description-3-div{
     position:fixed;
     left:0;
     bottom:-6px;
@@ -38,12 +40,68 @@ body{
     padding: 0;
     margin: 0;
 }
-.descirption-1-img{
+.description-1-div,.description-2-div{
+    z-index:20;
+}
+.description-3-div{
+    z-index:5;
+}
+.description-3-cover-div{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom: 0;
+    top:0;
+    opacity: 0;
+    display: block;
+}
+.description-1-img,.description-3-img{
     width: 100%;
     padding: 0;
     margin: 0;
 }
-.descirption-1-text-div{
+.description-3-text-div{
+    position: absolute;
+    left:9.06%;
+    top:0.35%;
+    width:72.8%;
+    height: 65.57%;
+    padding-top:8px;
+    padding-left:1.5em;
+    display: none;
+}
+.description-3-text-div > p{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 28px;
+    color: #555555;
+    margin: 0;
+    text-align: left;
+
+}
+.description-3-text-div a{
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+.description-3-text-div > a{
+    display: block;
+}
+.description-3-text-div > a:nth-of-type(1){
+     margin-top:26px;
+ }
+.description-3-text-div > a:nth-of-type(2){
+    margin-top:10px;
+    margin-bottom: 18px;
+}
+.description-3-text-div span{
+    font-size: 22px;
+    font-weight: bolder;
+    line-height: 28px;
+    color: green;
+    margin: 0 6px;
+}
+.description-1-text-div{
     position: absolute;
 
     left:11.56%;
@@ -52,9 +110,10 @@ body{
     height: 31.46%;
     padding-top:16px;
 }
-.descirption-1-text-div > p{
-    font-size: 24px;
+.description-1-text-div > p{
+    font-size: 16px;
     font-weight: bold;
+    line-height: 28px;
     color: #555555;
     margin: 0;
     text-align: center;
@@ -95,4 +154,25 @@ body{
     font-weight: bold;
     text-align: center;
     margin: 16px;
+}
+.button{
+    display: block;
+    width: 135px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+    font-weight: bold;
+    margin:0.5em auto;
+    text-align: center;
+    background-repeat:no-repeat;
+    background-size: cover;
+
+}
+.green-button{
+    background-image: url("../game_resource/lv.png");
+    color:white;
+}
+.white-button{
+    background-image: url("../game_resource/bai.png");
+    color:green;
 }
