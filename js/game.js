@@ -213,12 +213,12 @@ function updateObjStatus()
         var shape=objs[i];
         shape.y+=(shape.target_y-shape.source_y)*shape.speed;
         shape.x+=(shape.target_x-shape.source_x)*shape.speed;
-
+/*
         if(shape.rotation_direction==0)
             shape.rotation=(shape.rotation+360*shape.speed*3)%360;
         else
             shape.rotation=(shape.rotation-360*shape.speed*3+360)%360;
-
+*/
         if(shape.y>50)
             shape.speed+=shape.speed*0.005;
 
