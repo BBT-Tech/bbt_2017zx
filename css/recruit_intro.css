@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    background-image: url("../img/bg.png");
+
+}
+.bottom-img{
+    position:fixed;
+    display: block;
+    bottom:0;
+    left:0;
+    width:100%;
+    z-index:10;
+}
+/* 骚操作：图片自动缩放且最大高度确定且居中 */
+.head-div{
+    display: block;
+    margin: 24px 0;
+    width: 100%;
+    text-align: center;
+}
+.head-img-div{
+    display: inline-block;
+    margin: 0 auto;
+    max-height: 75px;
+    max-width: 100%;
+}
+.head-img-div > img{
+    display: block;
+    margin:0 auto;
+    width: 100%;
+}
+/* 骚操作结束 */
+.left-arrow{
+    background-image: url("../img/arrow.svg");
+    display: block;
+    position: fixed;
+    transform:rotate(180deg);
+    left:40px;
+    top:40%;
+    width:22px;
+    height:32px;
+}
+.right-arrow{
+    background-image: url("../img/arrow.svg");
+    display: block;
+    position: fixed;
+    right:40px;
+    top:40%;
+    width:22px;
+    height:32px;
+    z-index: 100;
+}
+.description{
+    margin:0 60px;
+}
+.description > p{
+    font-size: 18px;
+    line-height: 36px;
+    text-indent:2em;
+    color:#555555;
+    margin: 0;
+}
+.button
+{
+    width:130px;
+    height:40px;
+    background-color: #ffffff;
+    opacity:0.63;
+    color:#1c9a12;
+    font-size: 15px;
+    border-radius: 4px;
+    border:1px solid;
+    display:block;
+    margin:0 auto;
+    margin-top:32px;
+}
