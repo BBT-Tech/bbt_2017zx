@@ -1,0 +1,36 @@
+body
+{
+	background-image: url(../img/bg.png);
+	background-repeat:repeat;
+	padding: 0px;
+	margin: 0px;
+}
+div
+{
+	text-align: center;
+}
+div.content
+{
+	padding-top: 42px;
+	font-size: 15px;
+	line-height: 23px;
+	color:#555555;
+}
+img.success
+{
+	width:50%;
+	height: 50%;
+	padding-top: 130px;
+}
+div.bottom
+{
+	position:absolute;
+	bottom: 0px;
+	font-size: 0px;
+	width: 100%;
+}
+img.bottom
+{
+	width:100%;
+	// height:120px;
+}
