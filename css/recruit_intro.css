@@ -1,7 +1,8 @@
 body{
     margin: 0;
     background-image: url("../img/bg.png");
-
+    max-width: 100%;
+    overflow-x: hidden;
 }
 .bottom-img{
     position:fixed;
@@ -15,6 +16,7 @@ body{
 .head-div{
     display: block;
     margin: 24px 0;
+    margin-bottom: 12px;
     width: 100%;
     text-align: center;
 }

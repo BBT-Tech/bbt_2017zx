@@ -6,16 +6,16 @@
     <link rel="stylesheet" href="css/recruit_intro.css?<?php echo filemtime("css/recruit_intro.css");?>">
     <link rel="stylesheet" href="lib/animate.css/animate.min.css">
     <script src="lib/axios/dist/axios.min.js"></script>
-    <script src="lib/vue/dist/vue.js"></script>
+    <script src="lib/vue/dist/vue.min.js"></script>
     <title></title>
 </head>
 <body>
-<div id="vm_div">
+<div id="vm_div" @touchstart="touchstart" @touchend="touchend">
     <img class="bottom-img" src="img/bottom.png" />
     <transition-group name="fade-in"
                 :enter-active-class="fade_in_class"
                 :leave-active-class="fade_out_class"
-                      mode="in-out">
+                      >
         <div v-for="(department,pos) in departments" v-show="cur_pos==pos" key="'div-'+pos" class="animate-div">
             <div class="head-div" >
                 <div class="head-img-div" >
@@ -30,52 +30,11 @@
     </transition-group>
 
 
-    <span class="left-arrow" v-if="cur_pos>0" @click="goPage(cur_pos-1)"></span>
-    <span class="right-arrow" v-if="cur_pos<departments.length-1" @click="goPage(cur_pos+1)"></span>
-
+    <span class="left-arrow" v-if="true || cur_pos>0" @click="goPage(cur_pos-1)"></span>
+    <span class="right-arrow " v-if="true || cur_pos<departments.length-1" @click="goPage(cur_pos+1)"></span>
+<!-- animated fadeOutLeft infinite
+animated fadeOutRight infinite -->
 </div>
-
-
-<script type="text/javascript">
-    var vm=new Vue(
-        {
-            el: "#vm_div",
-            data: {
-                departments :[],
-                cur_pos:0,
-                fade_in_class:'',
-                fade_out_class:''
-            },
-            filters: {
-
-            },
-            created: function(){
-                axios.get("departments.json")
-                    .then(function(response)
-                    {
-                        vm.departments=response.data.departments;
-                    });
-            },
-            methods: {
-                goPage:function(page)
-                {
-                    if(page<this.cur_pos)
-                    {
-                        this.fade_in_class='animated fadeInLeft';
-                        this.fade_out_class='animated fadeOutRight';
-                    }
-                    else
-                    {
-
-                        this.fade_in_class='animated fadeInRight';
-                        this.fade_out_class='animated fadeOutLeft';
-                    }
-                    this.cur_pos=page;
-
-                }
-            }
-        }
-    );
-</script>
+<script src="js/recruit_intro.js?<?php echo filemtime("js/recruit_intro.js");?>"></script>
 </body>
 </html>
