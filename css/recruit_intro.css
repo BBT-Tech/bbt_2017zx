@@ -11,7 +11,7 @@ body{
     width:100%;
     z-index:10;
 }
-/* 骚操作：图片自动缩放且最大高度确定且居中 */
+/* <del>骚操作：图片自动缩放且最大高度确定且居中</del> */
 .head-div{
     display: block;
     margin: 24px 0;
@@ -22,40 +22,42 @@ body{
     display: inline-block;
     margin: 0 auto;
     max-height: 75px;
-    max-width: 100%;
+    max-width: 80%;
 }
 .head-img-div > img{
     display: block;
     margin:0 auto;
-    width: 100%;
+    height:45px;
 }
 /* 骚操作结束 */
 .left-arrow{
-    background-image: url("../img/arrow.svg");
+    background-image: url("../img/arrow.png");
+    background-size: cover;
     display: block;
     position: fixed;
     transform:rotate(180deg);
-    left:40px;
+    left:26px;
     top:40%;
-    width:22px;
-    height:32px;
+    width:11px;
+    height:16px;
 }
 .right-arrow{
-    background-image: url("../img/arrow.svg");
+    background-image: url("../img/arrow.png");
+    background-size: cover;
     display: block;
     position: fixed;
-    right:40px;
+    right:26px;
     top:40%;
-    width:22px;
-    height:32px;
+    width:11px;
+    height:16px;
     z-index: 100;
 }
 .description{
     margin:0 60px;
 }
 .description > p{
-    font-size: 18px;
-    line-height: 36px;
+    font-size: 14px;
+    line-height: 32px;
     text-indent:2em;
     color:#555555;
     margin: 0;
@@ -73,4 +75,10 @@ body{
     display:block;
     margin:0 auto;
     margin-top:32px;
+}
+.animate-div{
+    position: absolute;height:90%;overflow-y: auto;
+}
+.sitg-div{
+    height:100px;
 }

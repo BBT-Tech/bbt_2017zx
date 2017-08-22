@@ -36,13 +36,27 @@ function onLoaded()
 
 function tmp()
 {
-    document.getElementById("loading").style.display="none";
-    document.getElementById("description-1").style.display="block";
-    document.getElementById("description-1").className+=" animated infinite pulse";
-    document.getElementById("description-1").onclick= function () {
-        document.getElementById("description-1").style.display="none";
-        showDescription2();
+    var isPlayed=localStorage.played;
+    /*console.log(isPlayed);
+    console.log(true);*/
+    if(isPlayed=='true')//localStorage的坑
+    {
+        gameInit(false);
+        document.getElementById("loading").style.display="none";
+        gameReseeResult();
     }
+    else
+    {
+        document.getElementById("loading").style.display="none";
+        document.getElementById("description-1").style.display="block";
+        document.getElementById("description-1").className+=" animated infinite pulse";
+        document.getElementById("description-1").onclick= function () {
+            document.getElementById("description-1").style.display="none";
+            showDescription2();
+        }
+    }
+
+
 }
 function showDescription2()
 {
@@ -59,12 +73,10 @@ function showDescription2()
         gameInit();
     }
 }
-function gameEnd()
+function showResult(play_time)
 {
-    if(isGameEnded)
-        return;
-    isGameEnded=true;
-    var play_time=getPlayTime();
+    document.getElementById("score_display").style.display="none";
+
     score=play_time;
     var is_succeed;
     if(play_time>=30)
@@ -88,10 +100,27 @@ function gameEnd()
     document.getElementById("description-3").style.display="block";
     document.getElementById("description-3").className+=" animated rollIn";
     isGameEnd=true;
+    localStorage.played='true';
+    localStorage.score=score;
     console.log("game end");
 }
-function gameInit()
+function gameEnd()
 {
+    if(isGameEnded)
+        return;
+    isGameEnded=true;
+    var play_time=getPlayTime();
+    showResult(play_time);
+}
+
+function gameReseeResult()
+{
+    showResult(localStorage.score);
+}
+function gameInit(ifStartGame)
+{
+    if(ifStartGame==null)
+        ifStartGame=true;
     isGameEnd=false;
     isGameEnded=false;
     var canvas=document.getElementById("gameCanvas");
@@ -110,8 +139,8 @@ function gameInit()
     container=new createjs.Container();
     stage.addChild(container);
 
-
-    gameStart();
+    if(ifStartGame)
+        gameStart();
 }
 function gameStart()
 {
@@ -135,6 +164,7 @@ function gameStart()
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.interval=25;
     start_time=(new Date()).getTime();
+    document.getElementById("score_display").style.display="block";
     createjs.Ticker.addEventListener("tick", tick);
 }
 function addObj(drop_obj,isUltraQuick)
@@ -197,12 +227,20 @@ function tick(event)
         createjs.Ticker.removeAllEventListeners();
         setTimeout(gameEnd,1000);
     }
+    var time=0;
     if(isGameEnd)
+    {
         scoreLabel.text = "您的可爱值："+score.toFixed(2) + " FPS: "+Math.round(createjs.Ticker.getMeasuredFPS() )+ " 萝卜数： " + objs.length ;
+        time=score.toFixed(2);
+
+    }
     else
+    {
         scoreLabel.text = "您的可爱值："+getPlayTime().toFixed(2) + " FPS: "+Math.round(createjs.Ticker.getMeasuredFPS() )+ " 萝卜数： " + objs.length ;
-
-
+        time=getPlayTime().toFixed(2);
+    }
+    time=time.toString().split(".");
+    document.getElementById("score_display").innerText=time[0] +"' " + time[1];
     stage.update();
 
 }
@@ -277,5 +315,7 @@ function reStartGame()
 
     document.getElementById("description-3").style.display="none";
     document.getElementById("description-3").className="description-3-div";
+    stage.update();
+    localStorage.played='false';
     setTimeout(gameStart,1000);
 }

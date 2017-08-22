@@ -16,10 +16,9 @@
     <div class="description-1-div" id="description-1">
         <img class="description-1-img" src="game_resource/1.png"/>
         <div class="description-1-text-div">
-            <p>Hi 这里是百步梯</p>
-            <p>想加入我们吗</p>
-            <p>先接受梯仔的挑战吧！！</p>
-            <p>只是个简单的小游戏啦</p>
+            <p>嗨 这里百步梯</p>
+            <p>报名吗</p>
+            <p>先来玩个小游戏吧</p>
             <span class="button green-button">开始</span>
         </div>
     </div>
@@ -34,16 +33,19 @@
 
         <div class="description-3-text-div" id="game_faild">
             <p>你的成绩为<span id="player_score_faild">11</span></p>
-            <p>很遗憾没能通过梯仔的挑战> <</p>
+            <p>很遗憾没能通过> <</p>
             <p>不过别灰心</p>
             <p>这游戏就没打算让人通过啦</p>
             <p>虽然现在已经有<span id="passed_faild">11</span>人通过啦</p>
             <p>大家真是太厉害了> - <</p>
             <p>没过也没关系哦</p>
             <p>别忘了报名才是正事啦</p>
-            <a href="#">马上报名 > ></a>
-            <a href="#">查看部门介绍 > ></a>
-            <p>当然你也可以 <a href="#" onclick="reStartGame();">再次挑战</a></p>
+            <p>当然你也可以选择 <a href="#" onclick="reStartGame();">再玩一次</a></p>
+            <div class="two-col-div">
+                <a href="recruit.html" class="button white-button">马上报名</a>
+                <a href="recruit_intro.php" class="button white-button">部门介绍</a>
+            </div>
+
         </div>
         <div class="description-3-text-div" id="game_succeed">
             <p>你的成绩为<span id="player_score_succeed">11</span></p>
@@ -66,6 +68,7 @@
         <img class="loading-img roating" src="game_resource/daluobo.png" width="71" height="81"/>
         <span class="loading-text animated infinite bounce">Loading...</span>
     </div>
+    <span class="button score-span" id="score_display">12' 50</span>
     <canvas id="gameCanvas"></canvas>
 </div>
 

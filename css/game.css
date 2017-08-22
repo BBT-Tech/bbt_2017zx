@@ -62,41 +62,38 @@ body{
 }
 .description-3-text-div{
     position: absolute;
-    left:9.06%;
-    top:0.35%;
-    width:72.8%;
-    height: 65.57%;
-    padding-top:8px;
-    padding-left:1.5em;
+    left:3.48%;
+    top:2.29%;
+    width:82.99%;
+    height: 61.04%;
+    padding-top:20px;
     display: none;
 }
-.description-3-text-div > p{
+.description-3-text-div  p{
+
     font-size: 16px;
-    font-weight: bold;
     line-height: 28px;
     color: #555555;
     margin: 0;
     text-align: left;
-
+    margin-left: 40px;
 }
 .description-3-text-div a{
     text-decoration: none;
     color: green;
-    font-weight: bold;
+    display: inline-block;
+    margin: 0 12px;
 }
-.description-3-text-div > a{
+.two-col-div{
     display: block;
+    margin: 16px 0;
+    text-align: center;
 }
-.description-3-text-div > a:nth-of-type(1){
-     margin-top:26px;
+.description-3-text-div >a:nth-of-type(1){
+    font-weight: bolder;
  }
-.description-3-text-div > a:nth-of-type(2){
-    margin-top:10px;
-    margin-bottom: 18px;
-}
 .description-3-text-div span{
     font-size: 22px;
-    font-weight: bolder;
     line-height: 28px;
     color: green;
     margin: 0 6px;
@@ -108,12 +105,11 @@ body{
     top:43.57%;
     width:82.65%;
     height: 31.46%;
-    padding-top:16px;
+    padding-top:20px;
 }
 .description-1-text-div > p{
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 36px;
     color: #555555;
     margin: 0;
     text-align: center;
@@ -157,22 +153,38 @@ body{
 }
 .button{
     display: block;
-    width: 135px;
-    height: 36px;
-    line-height: 36px;
+    width: 96px;
+    height: 32px;
+    line-height: 32px;
     font-size: 18px;
-    font-weight: bold;
     margin:0.5em auto;
     text-align: center;
     background-repeat:no-repeat;
     background-size: cover;
+    border-radius: 6px;
 
 }
 .green-button{
-    background-image: url("../game_resource/lv.png");
+    background-color: #1c9a12;
     color:white;
 }
 .white-button{
+    background-color: white;
+    color:#1c9a12;
+    border-color: #1c9a12;
+    border-width: 2px;
+    border-style: solid;
+
+}
+.score-span{
+    width: 135px;
+    height: 36px;
     background-image: url("../game_resource/bai.png");
-    color:green;
+    color: green;
+    position: fixed;
+    right: 12px;
+    top:12px;
+    line-height: 36px;
+    z-index: 200;
+    display: none;
 }
