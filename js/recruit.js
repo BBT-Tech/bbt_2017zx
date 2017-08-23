@@ -141,3 +141,5 @@ $("form").addEventListener('submit', function(e) {
 		});
 	}
 });
+if(localStorage.played!='true')
+	window.location="luobo.php";

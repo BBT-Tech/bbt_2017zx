@@ -1,6 +1,8 @@
 /**
  * Created by i on 2017-08-23.
  */
+if(localStorage.played!='true')
+    window.location="luobo.php";
 var vm=new Vue(
     {
         el: "#vm_div",
@@ -16,11 +18,18 @@ var vm=new Vue(
 
         },
         created: function(){
-            axios.get("departments.json")
+            axios.get("intro.php")
                 .then(function(response)
                 {
-                    vm.departments=response.data.departments;
+                    if(response.data.code==0)
+                        vm.departments=response.data.departments;
+                    else
+                        alert("看起来您的网络不太好喔...请刷新一下页面");
+                })
+                .catch(function(err){
+                    alert("看起来您的网络不太好喔...请刷新一下页面");
                 });
+
         },
         methods: {
             goPage:function(page)

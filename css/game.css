@@ -62,11 +62,11 @@ body{
 }
 .description-3-text-div{
     position: absolute;
-    left:3.48%;
-    top:2.29%;
-    width:82.99%;
-    height: 61.04%;
-    padding-top:20px;
+    left:11.73%;
+    top:2.18%;
+    width:76%;
+    height: 61.06%;
+    padding-top:10px;
     display: none;
 }
 .description-3-text-div  p{
@@ -80,9 +80,12 @@ body{
 }
 .description-3-text-div a{
     text-decoration: none;
-    color: green;
+
     display: inline-block;
     margin: 0 12px;
+}
+.description-3-text-div p a{
+    color:#1c9a12;
 }
 .two-col-div{
     display: block;
@@ -91,11 +94,12 @@ body{
 }
 .description-3-text-div >a:nth-of-type(1){
     font-weight: bolder;
+    color: #1c9a12;
  }
 .description-3-text-div span{
     font-size: 22px;
     line-height: 28px;
-    color: green;
+    color: #1c9a12;
     margin: 0 6px;
 }
 .description-1-text-div{
@@ -161,7 +165,7 @@ body{
     text-align: center;
     background-repeat:no-repeat;
     background-size: cover;
-    border-radius: 6px;
+    border-radius: 4px;
 
 }
 .green-button{
@@ -172,15 +176,24 @@ body{
     background-color: white;
     color:#1c9a12;
     border-color: #1c9a12;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
+    font-size: 16px;
+}
+.baoming-button{
+    background-color: #1c9a12;
+    color:white;
+    border-color: #1c9a12;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 16px;
 
 }
 .score-span{
     width: 135px;
     height: 36px;
     background-image: url("../game_resource/bai.png");
-    color: green;
+    color: #1c9a12;
     position: fixed;
     right: 12px;
     top:12px;

@@ -14,6 +14,27 @@ var isGameEnd=false;
 var container;
 var drop_obj;
 var isGameEnded=false;
+var records="";
+function record(data)
+{
+
+    var tmp=((1<<20)^1-1)^(getPlayTime()*100);
+    data=data.toString();
+    var tt=100000000;
+    for(var i=0;i<data.length;i++)
+    {
+        tt+=(data.charAt(i)*tmp^tmp);
+    }
+    records+=tt.toString();
+}
+function getRecord(check)
+{
+    var where=(1<<8)-1;
+    where=where^(check<<3);
+    var ret=records.substr(0,where-1)+check+records.substr(where+1,records.length-where);
+    console.log(ret.charAt(246));
+    return ret;
+}
 function init(){
     var manifest = [
         {src: "daluobo.png", id: "drop_obj"},
@@ -73,7 +94,7 @@ function showDescription2()
         gameInit();
     }
 }
-function showResult(play_time)
+function showResult(play_time,pass_count)
 {
     document.getElementById("score_display").style.display="none";
 
@@ -101,7 +122,8 @@ function showResult(play_time)
     document.getElementById("description-3").className+=" animated rollIn";
     isGameEnd=true;
     localStorage.played='true';
-    localStorage.score=score;
+    if(localStorage.score!=null && localStorage.score<score)
+        localStorage.score=score;
     console.log("game end");
 }
 function gameEnd()
@@ -110,12 +132,42 @@ function gameEnd()
         return;
     isGameEnded=true;
     var play_time=getPlayTime();
-    showResult(play_time);
+    var obj=new Object;
+    obj.passedRecord=getRecord(play_time>=30?1:0);
+    axios.post("game.php",JSON.stringify(obj))
+        .then(function(response){
+            if(response.data.code==0)
+            {
+                showResult(play_time,response.data.passedNo);
+            }
+            else
+                alert("看起来您的网络不太好喔...请刷新一下页面");
+
+        })
+        .catch(function(err){
+            alert("看起来您的网络不太好喔...请刷新一下页面");
+        });
+
+
 }
+
 
 function gameReseeResult()
 {
-    showResult(localStorage.score);
+    axios.get("game.php")
+        .then(function(response){
+            if(response.data.code==0)
+            {
+
+            }
+            else
+                alert("看起来您的网络不太好喔...请刷新一下页面");
+
+        })
+        .catch(function(err){
+            alert("看起来您的网络不太好喔...请刷新一下页面");
+        });
+    showResult(localStorage.score,0);
 }
 function gameInit(ifStartGame)
 {
@@ -144,6 +196,7 @@ function gameInit(ifStartGame)
 }
 function gameStart()
 {
+    records="";
     isGameEnd=false;
     isGameEnded=false;
     container.removeAllChildren();
@@ -197,6 +250,7 @@ function onObjClick(obj)
     }
     else
     {
+        record(obj.x*10000+obj.y);
         setShapeInfo(obj);
     }
 }
@@ -239,8 +293,8 @@ function tick(event)
         scoreLabel.text = "您的可爱值："+getPlayTime().toFixed(2) + " FPS: "+Math.round(createjs.Ticker.getMeasuredFPS() )+ " 萝卜数： " + objs.length ;
         time=getPlayTime().toFixed(2);
     }
-    time=time.toString().split(".");
-    document.getElementById("score_display").innerText=time[0] +"' " + time[1];
+    //time=time.toString().split(".");
+    document.getElementById("score_display").innerText=time;
     stage.update();
 
 }

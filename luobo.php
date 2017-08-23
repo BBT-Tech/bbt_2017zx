@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="lib/animate.css/animate.min.css">
     <script src="lib/EaselJS/lib/easeljs-0.8.2.min.js"></script>
     <script src="lib/PreloadJS/lib/preloadjs-0.6.2.min.js"></script>
+    <script src="lib/axios/dist/axios.min.js"></script>
     <script src="js/game.js?<?php echo filemtime("js/game.js");?>"></script>
-    <title></title>
+    <title>可爱的萝呗</title>
 </head>
 <body onload="init();">
 <div>
@@ -42,23 +43,25 @@
             <p>别忘了报名才是正事啦</p>
             <p>当然你也可以选择 <a href="#" onclick="reStartGame();">再玩一次</a></p>
             <div class="two-col-div">
-                <a href="recruit.html" class="button white-button">马上报名</a>
+                <a href="recruit.html" class="button baoming-button">马上报名</a>
                 <a href="recruit_intro.php" class="button white-button">部门介绍</a>
             </div>
 
         </div>
         <div class="description-3-text-div" id="game_succeed">
             <p>你的成绩为<span id="player_score_succeed">11</span></p>
-            <p>恭喜你通过了梯仔的挑战！！</p>
+            <p>恭喜你通过！！</p>
             <p>天啦噜，太厉害了</p>
             <p>你是第<span id="passed_succeed">11</span>位通过挑战的人</p>
             <p>梯妹对你佩服得五体投地 >-<</p>
             <p>当然也不要太得瑟哟</p>
             <p>别忘了报名才是正事啦</p>
             <p>马上报名加入我们吧 >-<</p>
-            <a href="#">马上报名 > ></a>
-            <a href="#">查看部门介绍 > ></a>
-            <p>当然你也可以 <a href="#" onclick="reStartGame();">再次挑战</a></p>
+            <div class="two-col-div">
+                <a href="recruit.html" class="button baoming-button">马上报名</a>
+                <a href="recruit_intro.php" class="button white-button">部门介绍</a>
+            </div>
+            <p>当然你也可以选择 <a href="#" onclick="reStartGame();">再玩一次</a></p>
         </div>
         <div class="description-3-cover-div" id="description-3-cover">
 

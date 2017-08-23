@@ -33,18 +33,18 @@ body{
 }
 /* É§²Ù×÷½áÊø */
 .left-arrow{
-    background-image: url("../img/arrow.png");
+    background-image: url("../img/left_arrow.png");
     background-size: cover;
     display: block;
     position: fixed;
-    transform:rotate(180deg);
+    /*transform:rotate(180deg);*/
     left:26px;
     top:40%;
     width:11px;
     height:16px;
 }
 .right-arrow{
-    background-image: url("../img/arrow.png");
+    background-image: url("../img/right_arrow.png");
     background-size: cover;
     display: block;
     position: fixed;
