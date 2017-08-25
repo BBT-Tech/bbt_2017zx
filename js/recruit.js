@@ -2,6 +2,10 @@ function $(selector, element) {
 	element = element || document;
 	return element.querySelector(selector) || {};
 }
+function $$(selector, element) {
+	element = element || document;
+	return element.querySelectorAll(selector) || [];
+}
 $.post = function(url, argulist, success, fail) {
 	var obj=new XMLHttpRequest();
 	obj.open('POST', url);
@@ -141,5 +145,22 @@ $("form").addEventListener('submit', function(e) {
 		});
 	}
 });
+
+(function() {
+	var bind = function(e) {
+		e.addEventListener("focus", function() {
+			this.parentNode.className = "item-active";
+			this.dataset.placeholder = this.placeholder;
+			this.placeholder = "正在输入...";
+		});
+		e.addEventListener("blur", function() {
+			this.parentNode.className = "";
+			this.placeholder = this.dataset.placeholder;
+		});
+	}
+	$$("form input[type=text]").forEach(bind);
+	bind($("textarea"));
+})();
+
 if(localStorage.played!='true')
 	window.location="luobo.php";
