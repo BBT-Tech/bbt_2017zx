@@ -30,8 +30,8 @@
     </transition-group>
 
 
-    <span class="left-arrow animated fadeOutLeft infinite" v-if="true || cur_pos>0" @click="goPage(cur_pos-1)"></span>
-    <span class="right-arrow animated fadeOutRight infinite" v-if="true || cur_pos<departments.length-1" @click="goPage(cur_pos+1)"></span>
+    <span class="left-arrow" v-if="true || cur_pos>0" @click="goPage(cur_pos-1)"></span>
+    <span class="right-arrow" v-if="true || cur_pos<departments.length-1" @click="goPage(cur_pos+1)"></span>
 <!-- animated fadeOutLeft infinite
 animated fadeOutRight infinite -->
 </div>

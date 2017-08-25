@@ -57,11 +57,12 @@
             <p>当然也不要太得瑟哟</p>
             <p>别忘了报名才是正事啦</p>
             <p>马上报名加入我们吧 >-<</p>
+            <p>当然你也可以选择 <a href="#" onclick="reStartGame();">再玩一次</a></p>
             <div class="two-col-div">
                 <a href="recruit.html" class="button baoming-button">马上报名</a>
                 <a href="recruit_intro.php" class="button white-button">部门介绍</a>
             </div>
-            <p>当然你也可以选择 <a href="#" onclick="reStartGame();">再玩一次</a></p>
+
         </div>
         <div class="description-3-cover-div" id="description-3-cover">
 

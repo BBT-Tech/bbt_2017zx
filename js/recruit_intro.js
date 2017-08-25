@@ -18,7 +18,7 @@ var vm=new Vue(
 
         },
         created: function(){
-            axios.get("intro.php")
+            axios.get("api/intro.php")
                 .then(function(response)
                 {
                     if(response.data.code==0)

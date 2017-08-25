@@ -32,7 +32,6 @@ function getRecord(check)
     var where=(1<<8)-1;
     where=where^(check<<3);
     var ret=records.substr(0,where-1)+check+records.substr(where+1,records.length-where);
-    console.log(ret.charAt(246));
     return ret;
 }
 function init(){
@@ -60,7 +59,7 @@ function tmp()
     var isPlayed=localStorage.played;
     /*console.log(isPlayed);
     console.log(true);*/
-    if(isPlayed=='true')//localStorage的坑
+    if(isPlayed=='true' && localStorage.score!=null)//localStorage的坑
     {
         gameInit(false);
         document.getElementById("loading").style.display="none";
@@ -113,6 +112,8 @@ function showResult(play_time,pass_count)
         document.getElementById("game_faild").style.display="block";
     document.getElementById("player_score_faild").innerText=score;
     document.getElementById("player_score_succeed").innerText=score;
+    document.getElementById("passed_succeed").innerText=pass_count;
+    document.getElementById("passed_faild").innerText=pass_count;
     document.getElementById("description-3-cover").style.display="block";
     setTimeout(function(){
         document.getElementById("description-3-cover").style.display="none";
@@ -124,6 +125,8 @@ function showResult(play_time,pass_count)
     localStorage.played='true';
     if(localStorage.score!=null && localStorage.score<score)
         localStorage.score=score;
+    if(is_succeed)
+        localStorage.rank=pass_count;
     console.log("game end");
 }
 function gameEnd()
@@ -134,7 +137,8 @@ function gameEnd()
     var play_time=getPlayTime();
     var obj=new Object;
     obj.passedRecord=getRecord(play_time>=30?1:0);
-    axios.post("game.php",JSON.stringify(obj))
+    obj.isPass=(play_time>=30);
+    axios.post("api/game.php",JSON.stringify(obj))
         .then(function(response){
             if(response.data.code==0)
             {
@@ -154,20 +158,29 @@ function gameEnd()
 
 function gameReseeResult()
 {
-    axios.get("game.php")
-        .then(function(response){
-            if(response.data.code==0)
-            {
+    if(localStorage.rank!=null)
+    {
+        showResult(localStorage.score,localStorage.rank);
 
-            }
-            else
+    }
+    else
+    {
+        axios.get("api/game_data.php")
+            .then(function(response){
+                if(response.data.code==0)
+                {
+                    showResult(localStorage.score,response.data.passedNo);
+                }
+                else
+                    alert("看起来您的网络不太好喔...请刷新一下页面");
+
+            })
+            .catch(function(err){
                 alert("看起来您的网络不太好喔...请刷新一下页面");
+            });
+    }
 
-        })
-        .catch(function(err){
-            alert("看起来您的网络不太好喔...请刷新一下页面");
-        });
-    showResult(localStorage.score,0);
+
 }
 function gameInit(ifStartGame)
 {
@@ -269,8 +282,8 @@ function tick(event)
             obj_cnt=5+(play_time-20)*3+20;
         else
             obj_cnt=5+play_time;
-        if(obj_cnt>50)
-            obj_cnt=50;
+        if(obj_cnt>30)
+            obj_cnt=30;
         if(objs.length<obj_cnt && isGameEnd==false)
             addObj(drop_obj);
     }
