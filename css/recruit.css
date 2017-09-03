@@ -23,7 +23,7 @@ div.name
 {
 	padding-top:39px;
 }
-div.sex,div.grade,div.college,div.dorm,div.tel,div.first,div.second,div.intro
+div.sex,div.grade,div.college,div.dorm,div.tel,div.first,div.second,div.intro,div.tiaoji
 {
 	padding-top: 32px;
 }
@@ -119,7 +119,7 @@ select {
 	-webkit-appearance: none;
 }
 
-div.name,div.sex,div.grade,div.college,div.dorm,div.tel,div.first,div.second,div.intro {
+div.name,div.sex,div.grade,div.college,div.dorm,div.tel,div.first,div.second,div.intro,div.tiaoji {
 	position: relative;
 }
 .error-title {
