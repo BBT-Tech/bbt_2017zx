@@ -148,9 +148,9 @@ function gameEnd()
                 alert("看起来您的网络不太好喔...请刷新一下页面");
 
         })
-        .catch(function(err){
+        /*.catch(function(err){
             alert("看起来您的网络不太好喔...请刷新一下页面");
-        });
+        });*/
 
 
 }
@@ -175,9 +175,9 @@ function gameReseeResult()
                     alert("看起来您的网络不太好喔...请刷新一下页面");
 
             })
-            .catch(function(err){
+        /*.catch(function(err){
                 alert("看起来您的网络不太好喔...请刷新一下页面");
-            });
+            });*/
     }
 
 
