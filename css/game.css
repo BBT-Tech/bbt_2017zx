@@ -54,6 +54,7 @@ body{
     top:0;
     opacity: 0;
     display: block;
+    z-index:800;
 }
 .description-1-img,.description-3-img{
     width: 100%;

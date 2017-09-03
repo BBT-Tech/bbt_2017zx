@@ -149,3 +149,11 @@ div.name,div.sex,div.grade,div.college,div.dorm,div.tel,div.first,div.second,div
 	border-top: 1px solid #1c9a12;
 	border-bottom: 1px solid #1c9a12;
 }
+.back{
+	display:block;
+	position: fixed;
+	top:1em;
+	left:1em;
+	width: 2.5em;
+	height:2.5em;
+}
