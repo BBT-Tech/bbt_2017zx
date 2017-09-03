@@ -139,7 +139,9 @@ div.name,div.sex,div.grade,div.college,div.dorm,div.tel,div.first,div.second,div
 .first .error-tip {
 	left: 113px;
 }
-
+.tiaoji.error-tip{
+	left:143px;
+}
 .item-active span {
 	color: #1c9a12;
 }
