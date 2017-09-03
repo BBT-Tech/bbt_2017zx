@@ -79,6 +79,12 @@ var pattern = {
 	department2 : {
 		selector : "select[name=department2]",
 	},
+	tiaoji : {
+		selector : "input[name=tiaoji]:checked",
+		frame : ".tiaoji",
+		require : true,
+		msg : "调剂吗？( ˘•ω•˘ )"
+	},
 	intro : {
 		selector : "textarea[name=intro]",
 	}
