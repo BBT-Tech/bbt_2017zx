@@ -19,10 +19,10 @@ if (isset($request['isPassed']) && isset($request['passedRecord'])) {
 }
 
 $stmt = $connect->prepare('
-       SELECT passed_number
+       SELECT *
        FROM `game`');
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (empty($result)) response(3, '获取数据失败');
 
-echo json_encode(array('code' => 0, 'passedNo' => $result[0]['passed_number']));
+echo json_encode(array( 'code' => 0, 'passedNo' => $result[0]['passed_number'], 'total' => $result[0]['participate_number']));
