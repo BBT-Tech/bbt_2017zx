@@ -93,7 +93,7 @@ function showDescription2()
         gameInit();
     }
 }
-function showResult(play_time,pass_count)
+function showResult(play_time,pass_count,total_count)
 {
     document.getElementById("score_display").style.display="none";
 
@@ -112,7 +112,7 @@ function showResult(play_time,pass_count)
         document.getElementById("game_faild").style.display="block";
     document.getElementById("player_score_faild").innerText=score;
     document.getElementById("player_score_succeed").innerText=score;
-    document.getElementById("passed_succeed").innerText=pass_count;
+    document.getElementById("passed_succeed").innerText=((total_count-pass_count)/total_count*100).toFixed(1) +"%";
     document.getElementById("passed_faild").innerText=pass_count;
     document.getElementById("description-3-cover").style.display="block";
     setTimeout(function(){
@@ -142,7 +142,7 @@ function gameEnd()
         .then(function(response){
             if(response.data.code==0)
             {
-                showResult(play_time,response.data.passedNo);
+                showResult(play_time,response.data.passedNo,response.data.total);
             }
             else
                 alert("看起来您的网络不太好喔...请刷新一下页面");
@@ -158,27 +158,27 @@ function gameEnd()
 
 function gameReseeResult()
 {
-    if(localStorage.rank!=null)
-    {
-        showResult(localStorage.score,localStorage.rank);
 
-    }
-    else
-    {
-        axios.get("api/game_data.php")
-            .then(function(response){
-                if(response.data.code==0)
+    axios.get("api/game_data.php")
+        .then(function(response){
+            if(response.data.code==0)
+            {
+                if(localStorage.rank!=null)
                 {
-                    showResult(localStorage.score,response.data.passedNo);
+                    showResult(localStorage.score,localStorage.rank,response.data.total);
+
                 }
                 else
-                    alert("看起来您的网络不太好喔...请刷新一下页面");
-
-            })
-        /*.catch(function(err){
+                    showResult(localStorage.score,response.data.passedNo,response.data.total);
+            }
+            else
                 alert("看起来您的网络不太好喔...请刷新一下页面");
-            });*/
-    }
+
+        })
+    /*.catch(function(err){
+     alert("看起来您的网络不太好喔...请刷新一下页面");
+     });*/
+
 
 
 }

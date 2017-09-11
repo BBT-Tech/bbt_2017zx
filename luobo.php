@@ -52,7 +52,7 @@
             <p>你的成绩为<span id="player_score_succeed">11</span></p>
             <p>恭喜你通过！！</p>
             <p>天啦噜，太厉害了</p>
-            <p>你是第<span id="passed_succeed">11</span>位通过挑战的人</p>
+            <p>你超越了 <span id="passed_succeed">11</span> 的人</p>
             <p>梯妹对你佩服得五体投地 >-<</p>
             <p>当然也不要太得瑟哟</p>
             <p>别忘了报名才是正事啦</p>
