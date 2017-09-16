@@ -170,3 +170,34 @@ $("form").addEventListener('submit', function(e) {
 
 if(localStorage.played!='true')
 	window.location="luobo.php";
+
+
+
+var myDate = new Date();
+myDate.getYear();        //获取当前年份(2位)
+myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+myDate.getMonth();       //获取当前月份(0-11,0代表1月)       myDate.getMonth()+1
+myDate.getDate();        //获取当前日(1-31)
+myDate.getDay();                        //获取当前星期X(0-6,0代表星期天)
+myDate.getTime();                       //获取当前时间(从1970.1.1开始的毫秒数)    时间戳
+myDate.getHours();                      //获取当前小时数(0-23)
+myDate.getMinutes();                    //获取当前分钟数(0-59)
+myDate.getSeconds();                    //获取当前秒数(0-59)
+myDate.getMilliseconds();               //获取当前毫秒数(0-999)
+myDate.toLocaleDateString();            //获取当前日期  "2015/10/9"
+var mytime=myDate.toLocaleTimeString(); //获取当前时间  "下午4:15:47"
+
+if (new Date() < new Date("2017/9/17 12:0:0")){
+	alert("报名时间还没到");
+	$("form").innerHTML = "<center style='margin-top:50px'>现在不是报名时间哦</center>";
+    $("img.bottom").style.position="fixed";
+    $("img.bottom").style.bottom = "0";
+}
+
+if (new Date() > new Date("2017/9/20 23:59:0")){
+	alert("报名截止");
+	$("form").innerHTML = "<center style='margin-top:50px'>>_<~报名已经结束了</center>";
+    $("img.bottom").style.position="fixed";
+    $("img.bottom").style.bottom = "0";
+}
+
