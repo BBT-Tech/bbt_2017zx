@@ -1,10 +1,20 @@
 <?php
+/* --- Cofiguration Part Start --- */
+
+//Close time of register system
+$closeTime = '2017-09-21 00:00:00';
 
 //Database Configurations:
 $addr = 'localhost';			//Database Address
 $dbname = 'autumn_recruit_2017';		//Database Name
 $user = 'db_user_name';					//Username for Project Database
 $password = 'corresponding_password';		//Password for Project Database
+
+/* --- Cofiguration Part End --- */
+
+
+
+
 
 //Database Connection based on PDO:
 try {
@@ -14,11 +24,9 @@ try {
     exit(0);
 }
 
-
-
 //Return Code Process Function:
 function response($code, $errMsg = 'Success') {
-	echo json_encode(array('code' => $code, 'errMsg' => $errMsg));
+	echo json_encode(['code' => $code, 'errMsg' => $errMsg]);
 	exit(0);
 }
 
