@@ -123,7 +123,7 @@ function showResult(play_time,pass_count,total_count)
     document.getElementById("description-3").className+=" animated rollIn";
     isGameEnd=true;
     localStorage.played='true';
-    if(localStorage.score!=null && localStorage.score<score)
+    if(localStorage.score==null || localStorage.score<score)
         localStorage.score=score;
     if(is_succeed)
         localStorage.rank=pass_count;
@@ -137,7 +137,7 @@ function gameEnd()
     var play_time=getPlayTime();
     var obj=new Object;
     obj.passedRecord=getRecord(play_time>=30?1:0);
-    obj.isPass=(play_time>=30);
+    obj.isPassed=(play_time>=30);
     axios.post("api/game.php",JSON.stringify(obj))
         .then(function(response){
             if(response.data.code==0)
@@ -224,8 +224,8 @@ function gameStart()
         addObj(drop_obj,true);
 
     }
-    scoreLabel = new createjs.Text("您的可爱值：", "16px Arial", "red");
-    container.addChild(scoreLabel);
+    //scoreLabel = new createjs.Text("您的可爱值：", "16px Arial", "red");
+    //container.addChild(scoreLabel);
     stage.update();
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.interval=25;
@@ -297,13 +297,13 @@ function tick(event)
     var time=0;
     if(isGameEnd)
     {
-        scoreLabel.text = "您的可爱值："+score.toFixed(2) + " FPS: "+Math.round(createjs.Ticker.getMeasuredFPS() )+ " 萝卜数： " + objs.length ;
+        //scoreLabel.text = "您的可爱值："+score.toFixed(2) + " FPS: "+Math.round(createjs.Ticker.getMeasuredFPS() )+ " 萝卜数： " + objs.length ;
         time=score.toFixed(2);
 
     }
     else
     {
-        scoreLabel.text = "您的可爱值："+getPlayTime().toFixed(2) + " FPS: "+Math.round(createjs.Ticker.getMeasuredFPS() )+ " 萝卜数： " + objs.length ;
+        //scoreLabel.text = "您的可爱值："+getPlayTime().toFixed(2) + " FPS: "+Math.round(createjs.Ticker.getMeasuredFPS() )+ " 萝卜数： " + objs.length ;
         time=getPlayTime().toFixed(2);
     }
     //time=time.toString().split(".");
