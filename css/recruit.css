@@ -157,3 +157,9 @@ div.name,div.sex,div.grade,div.college,div.dorm,div.tel,div.first,div.second,div
 	width: 2.5em;
 	height:2.5em;
 }
+
+
+
+* {
+	max-width: 600px;
+}
