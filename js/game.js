@@ -15,6 +15,7 @@ var container;
 var drop_obj;
 var isGameEnded=false;
 var records="";
+var prev_tick_time=0;
 function record(data)
 {
 
@@ -212,6 +213,7 @@ function gameStart()
     records="";
     isGameEnd=false;
     isGameEnded=false;
+    prev_tick_time=(new Date()).getTime();
     container.removeAllChildren();
     objs=new Array();
     for(var i=0;i<3;i++)
@@ -269,6 +271,12 @@ function onObjClick(obj)
 }
 function tick(event)
 {
+    if((new Date()).getTime()-prev_tick_time>=1000)
+    {
+        alert("诶呀，掉线了，重新开始吧");
+        window.location.reload();
+    }
+    prev_tick_time=(new Date()).getTime();
     var play_time=getPlayTime();
     if(play_time>30)
     {
